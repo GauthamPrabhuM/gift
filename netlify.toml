@@ -1,0 +1,22 @@
+[build]
+command = "echo 'No build step required for this static site'"
+publish = "."
+
+[context.production]
+command = "echo 'Production build'"
+
+[context.deploy-preview]
+command = "echo 'Deploy preview'"
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+
+[[headers]]
+for = "/*"
+[headers.values]
+X-Content-Type-Options = "nosniff"
+X-Frame-Options = "DENY"
+X-XSS-Protection = "1; mode=block"
+Referrer-Policy = "no-referrer"
